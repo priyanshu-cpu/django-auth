@@ -1,0 +1,65 @@
+{% extends "auth/base.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow p-4">
+                <h3 class="text-center mb-4">Create Account</h3>
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="username" />
+                  <label class="form-label" for="form3Example1cg">Your Name</label>
+                  <div class="text-danger small">
+                            {{ form.username.errors }}
+                        </div>
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" name="password1" />
+                  <label class="form-label" for="form3Example4cg">Password</label>
+                    <div class="text-danger small">
+                            {{ form.password1.errors }}
+                        </div>
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" name="password2" />
+                  <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                  <div class="text-danger small">
+                            {{ form.password2.errors }}
+                        </div>
+                </div>
+                    <button type="submit" class="btn btn-success">
+                        Register
+                    </button>
+                </form>
+
+                <p class="text-center mt-3 mb-0">
+                    Already have an account?
+                    <a href="{% url 'login' %}">Login</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
